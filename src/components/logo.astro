@@ -1,0 +1,24 @@
+---
+interface Props {
+	pathname?: string;
+}
+
+const { pathname = "/" } = Astro.props;
+const isHome = pathname === "/" || pathname === "";
+---
+
+<a
+	href="/"
+	class="inline-flex shrink-0 items-center rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-400"
+	aria-current={isHome ? "page" : undefined}
+>
+	<img
+		src="/Klira-logo.svg"
+		alt="Klira"
+		width="101"
+		height="25"
+		class="h-6 w-auto sm:h-6"
+		loading="eager"
+		decoding="async"
+	/>
+</a>

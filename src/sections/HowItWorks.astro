@@ -1,0 +1,101 @@
+---
+import "swiper/css";
+import "swiper/css/pagination";
+
+const steps = [
+	{
+		title: "Set up your team",
+		body: "Add your team members, their availability, and how much capacity you want to keep in reserve. Klira builds its understanding of your team from there.",
+	},
+	{
+		title: "Bring in your workload",
+		body: "Tell Klira what your team is working on by talking to it directly, uploading a file, or adding it manually. However works best for you.",
+	},
+	{
+		title: "Start asking",
+		body: "That's it. Ask Klira anything about your team's workload and get an instant, data-backed answer to help you evaluate decisions.",
+	},
+];
+---
+
+<section
+	id="onboarding"
+	class="w-full max-w-7xl mx-auto px-4 py-8 md:py-16"
+	aria-labelledby="how-it-works-heading"
+>
+	<div class="flex flex-col items-start justify-center gap-2 text-left">
+		<p class="text-sm font-medium text-indigo-600">How it works</p>
+		<h2 id="how-it-works-heading" class="text-4xl text-zinc-900 text-left">
+			Up and running in minutes
+		</h2>
+	</div>
+
+	<div class="swiper how-it-works-swiper mt-10 md:mt-12">
+		<div class="swiper-wrapper">
+			{
+				steps.map((step, i) => (
+					<div class="swiper-slide h-auto">
+						<article class="flex h-full flex-col gap-5">
+							<div
+								class="aspect-4/5 w-full shrink-0 rounded-2xl bg-zinc-50"
+								aria-hidden="true"
+							/>
+							<div class="flex flex-col gap-2">
+								<h3 class="text-lg text-zinc-900">{step.title}</h3>
+								<p class="text-base text-zinc-500">{step.body}</p>
+							</div>
+						</article>
+					</div>
+				))
+			}
+		</div>
+		<div class="how-it-works-pagination swiper-pagination relative! mt-8! md:mt-0! md:hidden!" />
+	</div>
+</section>
+
+<style is:global>
+	.how-it-works-swiper .swiper-pagination-bullet {
+		background: rgb(161 161 170);
+		opacity: 1;
+	}
+	.how-it-works-swiper .swiper-pagination-bullet-active {
+		background: rgb(79 70 229);
+	}
+</style>
+
+<script>
+	import Swiper from "swiper";
+	import { Pagination } from "swiper/modules";
+
+	function initHowItWorksSwiper() {
+		const el = document.querySelector<HTMLElement>(".how-it-works-swiper");
+		if (!el || el.dataset.swiperInitialized === "true") return;
+
+		const paginationEl = el.querySelector<HTMLElement>(".how-it-works-pagination");
+		if (!paginationEl) return;
+
+		new Swiper(el, {
+			modules: [Pagination],
+			slidesPerView: 1,
+			spaceBetween: 20,
+			pagination: {
+				el: paginationEl,
+				clickable: true,
+			},
+			watchOverflow: true,
+			breakpoints: {
+				768: {
+					slidesPerView: 3,
+					spaceBetween: 20,
+					pagination: { enabled: false },
+					allowTouchMove: false,
+				},
+			},
+		});
+
+		el.dataset.swiperInitialized = "true";
+	}
+
+	initHowItWorksSwiper();
+	document.addEventListener("astro:page-load", initHowItWorksSwiper);
+</script>

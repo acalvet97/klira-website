@@ -1,0 +1,32 @@
+---
+import Logo from "../components/logo.astro";
+---
+
+<header class="sticky top-0 z-50 max-h-[80px] bg-white border-b border-zinc-200 px-4 md:px-8">
+  <div class="max-w-7xl px-4 py-1 mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <Logo pathname={Astro.url.pathname} />
+
+    <!-- Nav (desktop only) -->
+    <nav class="navbar hidden md:flex flex-row items-center text-base hover:text-zinc-400">
+      <a class="p-4 font-medium" href="#onboarding">How it works</a>
+      <a class="p-4 font-medium" href="#usecases">Use cases</a>
+      <a class="p-4 font-medium" href="#product">Product</a>
+    </nav>
+
+    <!-- Book a demo (desktop only) -->
+    <a href="mailto:hello@acalvet.com" class="hidden md:block text-base font-medium text-white bg-indigo-600 rounded-full px-4 py-2 hover:bg-indigo-500">
+      Book a demo
+    </a>
+
+    <!-- Hamburger (mobile only) -->
+    <button
+      id="menu-toggle"
+      aria-label="Toggle menu"
+      class="md:hidden relative w-6 h-5 z-50 mr-1">
+      <span class="absolute top-0 left-0 w-6 h-[2px] bg-black dark:bg-zinc-50 transition-all duration-300 ease-in-out"></span>
+      <span class="absolute top-[8px] left-0 w-6 h-[2px] bg-black dark:bg-zinc-50 transition-all duration-300 ease-in-out"></span>
+      <span class="absolute top-[16px] left-0 w-6 h-[2px] bg-black dark:bg-zinc-50 transition-all duration-300 ease-in-out"></span>
+    </button>
+  </div>
+</header>

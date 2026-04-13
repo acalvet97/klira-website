@@ -1,0 +1,20 @@
+---
+---
+
+<button
+	type="button"
+	data-theme-toggle
+	class="rounded-full border border-zinc-300 p-2 text-sm text-zinc-800 transition hover:border-zinc-400 dark:border-zinc-600 dark:text-zinc-100 dark:hover:border-zinc-400"
+	aria-label="Toggle color theme"
+>
+	<span class="dark:hidden" aria-hidden="true">Dark</span>
+	<span class="hidden dark:inline" aria-hidden="true">Light</span>
+</button>
+
+<script>
+	document.querySelectorAll("[data-theme-toggle]").forEach((btn) => {
+		btn.addEventListener("click", () => {
+			document.documentElement.classList.toggle("dark");
+		});
+	});
+</script>
