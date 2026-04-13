@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import HowItWorks from "../sections/HowItWorks.astro";
 import JustAskKlya from "../sections/JustAskKlya.astro";
+import heroImage from "../assets/images/Klira-hero.png";
 ---
 
 <Layout>
@@ -15,7 +16,15 @@ import JustAskKlya from "../sections/JustAskKlya.astro";
 				<a href="mailto:hello@acalvet.com" class="hidden md:block text-base font-medium text-white bg-indigo-600 rounded-full px-[2rem] py-[1rem] hover:bg-indigo-500">Book a demo</a>
 			</div>
 			<div>
-				<img src="/src/assets/images/Klira-hero.png" alt="Klira" class="w-5xl rounded-2xl" />
+				<img
+					src={heroImage.src}
+					width={heroImage.width}
+					height={heroImage.height}
+					alt="Klira"
+					class="w-5xl rounded-2xl"
+					loading="eager"
+					decoding="async"
+				/>
 			</div>
 		</section>
 		<section id="introduction" class="w-full max-w-7xl mx-auto px-4 py-16 md:py-16 grid grid-cols-1 md:grid-cols-2 gap-10 items-top">
