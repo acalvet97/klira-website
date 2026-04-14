@@ -1,3 +1,28 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--font-sans: "parabolica-text", ui-sans-serif, system-ui, sans-serif;
+	--font-heading: "parabolica", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+	html {
+		@apply font-sans;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-heading;
+	}
+
+	button,
+	a.inline-flex.rounded-full {
+		@apply font-medium;
+	}
+}
