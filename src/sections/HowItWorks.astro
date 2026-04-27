@@ -1,19 +1,27 @@
 ---
+import { Image } from "astro:assets";
 import "swiper/css";
 import "swiper/css/pagination";
+
+import setTeamImg from "../assets/images/Set-team.png";
+import workloadImg from "../assets/images/Workload.png";
+import startAskingImg from "../assets/images/Start-asking.png";
 
 const steps = [
 	{
 		title: "Set up your team",
 		body: "Add your team members, their availability, and how much capacity you want to keep in reserve. Klira builds its understanding of your team from there.",
+		image: setTeamImg,
 	},
 	{
 		title: "Bring in your workload",
 		body: "Tell Klira what your team is working on by talking to it directly, uploading a file, or adding it manually. However works best for you.",
+		image: workloadImg,
 	},
 	{
 		title: "Start asking",
 		body: "That's it. Ask Klira anything about your team's workload and get an instant, data-backed answer to help you evaluate decisions.",
+		image: startAskingImg,
 	},
 ];
 ---
@@ -42,9 +50,10 @@ const steps = [
 					steps.map((step, i) => (
 						<div class="swiper-slide h-auto">
 							<article class="flex h-full flex-col gap-5">
-								<div
-									class="aspect-4/5 w-full shrink-0 rounded-2xl bg-zinc-50"
-									aria-hidden="true"
+								<Image
+									src={step.image}
+									alt={step.title}
+									class="aspect-4/5 w-full shrink-0 rounded-2xl bg-zinc-50 object-cover"
 								/>
 								<div class="flex flex-col gap-2 md:px-0">
 									<h3 class="text-lg text-zinc-900">{step.title}</h3>
